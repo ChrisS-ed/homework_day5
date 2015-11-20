@@ -10,3 +10,8 @@ end
 def return_bay_with_item(chosen_item)
   WAREHOUSE.select { |wanted| wanted[:item] == chosen_item }.first[:bay]
 end
+
+def return_list_of_items(list_of_bays)
+  # start with an array, for each bay in array, we select that bay's item and add it to a new array of items, then return array of items
+  list_of_bays.map { |list_bay| return_item_at_bay(list_bay) }
+end
