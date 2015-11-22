@@ -20,69 +20,21 @@ def return_list_of_bays(list_of_items)
   list_of_items.map { |list_item| return_bay_with_item(list_item) }
 end
 
-############################
-
-def return_furthest_bays(list_of_bays)
-  # for each bay in list, check its position (index) against the position of every other bay in list to calculate biggest distance between any two bays
-  furthest_bays_distance = 0
-  list_of_bays.each_with_index { | list_bay, idx | 
-    biggest_distance = compare_with_other_bays(list_bay)
-    if biggest_distance > furthest_bays_distance
-      furthest_bays_distance = biggest_distance
-      puts "RFB: List_bay: #{list_bay}"
-      puts "RFB: Index: #{idx}"
-      puts "RFB: Furthest_bays_distance: #{furthest_bays_distance}"
-    end
-    }
-    return furthest_bays_distance
-end
-
-def compare_with_other_bays(test_bay)
-  # get test_bay index from WAREHOUSE
-
-  puts "CWOB: test bay = #{test_bay}"
-  test_idx = WAREHOUSE.index { |location| location[:bay] == test_bay }
-  puts test_idx
-
-  #test_idx = 10
-
-  furthest_distance = 0
-  WAREHOUSE.each_with_index {| this_bay, this_idx | 
-    new_distance = (test_idx - this_idx).abs
-    if new_distance > furthest_distance
-      furthest_distance = new_distance
-    end
-    puts "CWOB: test_bay: #{test_bay}"
-    puts "CWOB: test_idx: #{test_idx}"
-    puts "CWOB: this_bay: #{this_bay}"
-    puts "CWOB: this_idx: #{this_idx}"
-    puts "CWOB: furthest distance: #{furthest_distance}"
-  }
-  return furthest_distance
-end
-
-#######################
-
 def find_furthest_distance(list_of_bays)
+  # for each bay in list, compare with bays in rest of list to find biggest distance between bays, then update overall biggest distance variable
   furthest_bays_distance = 0
   list_of_bays.each { | list_bay | 
     biggest_distance = compare_with_rest_of_bays(list_bay, list_of_bays)
     if biggest_distance > furthest_bays_distance
       furthest_bays_distance = biggest_distance
-      puts "FFD: List_bay = #{list_bay}"
-      puts "FFD: List of bays = #{list_of_bays}"
-      puts "FFD: Furthest_bays_distance = #{furthest_bays_distance}"
     end
     }
     return furthest_bays_distance
 end
 
 def compare_with_rest_of_bays(test_bay, list_of_bays)
-  puts "CWRB: test bay = #{test_bay}"
-  puts "CWRB: list of bays = #{list_of_bays}"
+  # find index of test_bay in WAREHOUSE array, then compare with indices of other bays in bay list to find biggest distance between two bays
   test_idx = WAREHOUSE.index { |location| location[:bay] == test_bay }
-  puts "CWRB: test index = #{test_idx}"
-
   furthest_distance = 0
   list_of_bays.each {| this_bay| 
     this_idx = WAREHOUSE.index { |location| location[:bay] == this_bay }
@@ -90,9 +42,6 @@ def compare_with_rest_of_bays(test_bay, list_of_bays)
     if new_distance > furthest_distance
       furthest_distance = new_distance
     end
-    puts "CWOB: this_bay: #{this_bay}"
-    puts "CWOB: this_idx: #{this_idx}"
-    puts "CWOB: furthest distance: #{furthest_distance}"
   }
   return furthest_distance
 end
