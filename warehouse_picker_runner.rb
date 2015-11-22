@@ -16,8 +16,7 @@ require_relative './warehouse_picker_functions'
 
 #Given a list of bays, list the items in those bays
 
-# list_of_bays = []
-list_of_bays = ["a1", "b1", "c1"]
+list_of_bays = ["a10", "b5", "c10"]
 # input_bay = true
 # while input_bay == true
 #   print "Please enter a bay: "
@@ -32,3 +31,18 @@ list_of_bays = ["a1", "b1", "c1"]
 # end
 found_items = return_list_of_items(list_of_bays)
 puts found_items
+
+# Given a list of items find the bays.
+list_of_items = ["rubber band", "nail filer", "leg warmers"]
+found_bays = return_list_of_bays(list_of_items)
+puts found_bays
+
+# Given a list of bays, list the items in those bays, and calculate the distance from the two furthest apart bays. 
+list_of_bays = ["a1", "a2"]
+found_items = return_list_of_items(list_of_bays)
+furthest_bays_distance = return_furthest_bays(list_of_bays)
+puts "The biggest distance between two bays is #{furthest_bays_distance}"
+
+
+
+
