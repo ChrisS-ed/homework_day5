@@ -38,9 +38,9 @@ found_bays = return_list_of_bays(list_of_items)
 puts found_bays
 
 # Given a list of bays, list the items in those bays, and calculate the distance from the two furthest apart bays. 
-list_of_bays = ["a1", "a2"]
+list_of_bays = ["b3", "c7", "c9", "a3"]
 found_items = return_list_of_items(list_of_bays)
-furthest_bays_distance = return_furthest_bays(list_of_bays)
+furthest_bays_distance = find_furthest_distance(list_of_bays)
 puts "The biggest distance between two bays is #{furthest_bays_distance}"
 
 
