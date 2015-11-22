@@ -46,4 +46,16 @@ def compare_with_rest_of_bays(test_bay, list_of_bays)
   return furthest_distance
 end
 
+def order_bays(found_bays)
+  # sort bays by WAREHOUSE index of each bay in list
+  sorted_bays = found_bays.sort_by { | this_bay |
+    WAREHOUSE.index { |location| location[:bay] == this_bay }
+    puts "This bay = #{this_bay}"
+    this_idx = WAREHOUSE.index { |location| location[:bay] == this_bay }
+    puts "This bay's index = #{this_idx}"
+  }
+  puts "Sorted bays = #{sorted_bays}"
+  return sorted_bays
+end
+
 

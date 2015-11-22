@@ -49,7 +49,8 @@ puts "The biggest distance between two bays is #{furthest_bays_distance}"
 list_of_items = ["shoe lace", "rusty nail", "leg warmers"]
 found_bays = return_list_of_bays(list_of_items)
 puts "Found bays: #{found_bays} for items: #{list_of_items}"
-
+ordered_list_of_bays = order_bays(found_bays)
+puts "The bays should be visited in this order: #{ordered_list_of_bays}"
 
 
 
